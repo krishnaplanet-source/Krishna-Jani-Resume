@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishna Jani - Resume</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: #2c3e50;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+    }
+    
+    .resume-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        overflow: hidden;
+        position: relative;
+    }
+    
+    .resume-container::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+    }
+    
+    .header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px 50px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 200px;
+        height: 200px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    .header::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 150px;
+        height: 150px;
+        background: rgba(255,255,255,0.05);
+        border-radius: 50%;
+        animation: float 8s ease-in-out infinite reverse;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-20px) rotate(10deg); }
+    }
+    
+    .name {
+        font-size: 3.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        letter-spacing: -1px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 2;
+    }
+    
+    .title {
+        font-size: 1.3rem;
+        font-weight: 400;
+        opacity: 0.95;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 25px;
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(255,255,255,0.15);
+        padding: 8px 16px;
+        border-radius: 25px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+        background: rgba(255,255,255,0.25);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .content {
+        padding: 50px;
+    }
+    
+    .section {
+        margin-bottom: 45px;
+    }
+    
+    .section-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 25px;
+        position: relative;
+        padding-left: 20px;
+    }
+    
+    .section-title::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        border-radius: 2px;
+    }
+    
+    .summary {
+        font-size: 1.1rem;
+        color: #34495e;
+        line-height: 1.8;
+        text-align: justify;
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 4px solid #667eea;
+    }
+    
+    .achievements-grid {
+        display: grid;
+        gap: 20px;
+    }
+    
+    .achievement-item {
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+        padding: 25px;
+        border-radius: 15px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .achievement-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .achievement-item:hover::before {
+        opacity: 1;
+    }
+    
+    .achievement-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+    }
+    
+    .achievement-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+    
+    .achievement-desc {
+        color: #5a6c7d;
+        line-height: 1.7;
+    }
+    
+    .competencies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+    
+    .competency-category {
+        background: white;
+        border: 2px solid #f1f3f4;
+        border-radius: 15px;
+        padding: 25px;
+        transition: all 0.3s ease;
+    }
+    
+    .competency-category:hover {
+        border-color: #667eea;
+        box-shadow: 0 12px 30px rgba(102, 126, 234, 0.12);
+        transform: translateY(-3px);
+    }
+    
+    .competency-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .competency-list {
+        color: #5a6c7d;
+        line-height: 1.7;
+    }
+    
+    .experience-item {
+        background: white;
+        border: 2px solid #f1f3f4;
+        border-radius: 15px;
+        padding: 30px;
+        margin-bottom: 25px;
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .experience-item:hover {
+        border-color: #667eea;
+        box-shadow: 0 12px 30px rgba(102, 126, 234, 0.12);
+        transform: translateY(-2px);
+    }
+    
+    .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    
+    .job-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 5px;
+    }
+    
+    .company {
+        color: #667eea;
+        font-weight: 500;
+        font-size: 1.1rem;
+    }
+    
+    .job-period {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        white-space: nowrap;
+    }
+    
+    .job-description {
+        list-style: none;
+    }
+    
+    .job-description li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+        color: #5a6c7d;
+        line-height: 1.7;
+    }
+    
+    .job-description li::before {
+        content: '▶';
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-size: 0.9rem;
+    }
+    
+    .education-item, .cert-item {
+        background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border-left: 4px solid #667eea;
+        transition: all 0.3s ease;
+    }
+    
+    .education-item:hover, .cert-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+    }
+    
+    .edu-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 8px;
+        font-size: 1.1rem;
+    }
+    
+    .edu-details {
+        color: #667eea;
+        font-weight: 500;
+    }
+    
+    .cert-details {
+        margin-top: 15px;
+        color: #5a6c7d;
+        font-size: 0.95rem;
+        line-height: 1.7;
+    }
+    
+    .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+    
+    .skill-category {
+        background: white;
+        border: 2px solid #f1f3f4;
+        border-radius: 15px;
+        padding: 25px;
+        transition: all 0.3s ease;
+    }
+    
+    .skill-category:hover {
+        border-color: #667eea;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.12);
+    }
+    
+    .skill-title {
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+    }
+    
+    .skill-list {
+        color: #5a6c7d;
+        line-height: 1.7;
+    }
+    
+    .languages {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .language-item {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 15px 25px;
+        border-radius: 30px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .language-item:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+    }
+    
+    .footer-note {
+        text-align: center;
+        color: #7f8c8d;
+        font-style: italic;
+        margin-top: 40px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 10px;
+    }
+    
+    @media (max-width: 768px) {
+        body { padding: 10px; }
+        .content { padding: 30px 25px; }
+        .header { padding: 30px 25px; }
+        .name { font-size: 2.5rem; }
+        .contact-info { gap: 15px; }
+        .competencies-grid { grid-template-columns: 1fr; }
+        .skills-grid { grid-template-columns: 1fr; }
+        .job-header { flex-direction: column; }
+        .job-period { align-self: flex-start; }
+    }
+    
+    @media print {
+        body { 
+            background: white; 
+            padding: 0; 
+        }
+        .resume-container { 
+            box-shadow: none; 
+            border-radius: 0; 
+            max-width: none;
+        }
+        .header::before, .header::after { 
+            display: none; 
+        }
+        .achievement-item:hover, .competency-category:hover,
+        .experience-item:hover, .skill-category:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <h1 class="name">KRISHNA JANI</h1>
+            <p class="title">Strategic Content Leader & AI-Driven Marketing Professional</p>
+            <div class="contact-info">
+                <div class="contact-item">📍 Ahmedabad, Gujarat, India</div>
+                <div class="contact-item">📧 krishnajani28@yahoo.co.in</div>
+                <div class="contact-item">📱 +91 93281 48744</div>
+                <div class="contact-item">💬 +91 98255 97804</div>
+                <div class="contact-item">🔗 linkedin.com/in/krishnajani</div>
+                <div class="contact-item">🌐 Open to Office (Ahmedabad) & Remote Roles</div>
+            </div>
+        </div>
+    <div class="content">
+        <div class="section">
+            <h2 class="section-title">PROFESSIONAL SUMMARY</h2>
+            <p class="summary">Strategic Content Leader with 15+ years of experience creating high-impact content for SaaS, ITES, and global brands. Expert in developing ROI-driven content strategies, AI-optimized storytelling, and multi-channel campaigns that drive engagement, visibility, and lead generation. Proven track record in leading content teams, implementing AI-powered workflows, and building compelling brand narratives for diverse B2B audiences.</p>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">KEY ACHIEVEMENTS</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-title">Strategic Content Leadership</div>
+                    <div class="achievement-desc">Designed and executed comprehensive content strategies aligning with marketing and business objectives across multiple industries</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">AI-Powered Content Innovation</div>
+                    <div class="achievement-desc">Implemented AI-optimized content frameworks improving discoverability and ranking on traditional and AI-powered search platforms</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">Cross-Functional Collaboration</div>
+                    <div class="achievement-desc">Led teams to deliver high-quality, SEO-driven content across web, blogs, whitepapers, and social media channels</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">Team Development</div>
+                    <div class="achievement-desc">Mentored and managed content teams, enhancing quality, consistency, and performance across global markets</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-title">Performance-Driven Results</div>
+                    <div class="achievement-desc">Developed pillar-cluster content strategies driving significant growth in brand visibility and engagement</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">CORE COMPETENCIES</h2>
+            <div class="competencies-grid">
+                <div class="competency-category">
+                    <div class="competency-title">Content Strategy & Development</div>
+                    <div class="competency-list">Content Strategy & Planning | AI-Optimized Content Development | SEO & Keyword Research | Messaging Framework Design | B2B Content Marketing (Tech/ITES) | Content Editing & Quality Control</div>
+                </div>
+                <div class="competency-category">
+                    <div class="competency-title">AI & Technology Skills</div>
+                    <div class="competency-list">Generative AI Applications | Custom GPT Development | AI-Powered Content Creation | Marketing Automation | Social Media AI Tools | Content Performance Analysis</div>
+                </div>
+                <div class="competency-category">
+                    <div class="competency-title">Leadership & Analytics</div>
+                    <div class="competency-list">Team Leadership & Mentorship | CMS & Marketing Automation Tools | Competitive Analysis (SEMRush, SimilarWeb) | Global Market Content Development</div>
+                </div>
+                <div class="competency-category">
+                    <div class="competency-title">Design & Tools</div>
+                    <div class="competency-list">Canva (Basic Working Knowledge) | Content Management Systems (WordPress) | AI-Driven Insights Integration</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Content Manager</div>
+                        <div class="company">Coachbar.io</div>
+                    </div>
+                    <div class="job-period">Apr 2023 – Present</div>
+                </div>
+                <ul class="job-description">
+                    <li>Developed comprehensive content strategies supporting SaaS growth initiatives and brand positioning in competitive markets</li>
+                    <li>Produced high-quality, AI-optimized content for website, blogs, and press releases, ensuring SEO and AI-ranking best practices</li>
+                    <li>Maintained strategic editorial calendar aligned with product launches and integrated digital campaigns</li>
+                    <li>Collaborated with cross-functional marketing teams to deliver targeted TOFU, MOFU, and BOFU content for lead nurturing and conversion optimization</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Content Development Manager / Content Editor</div>
+                        <div class="company">Cin7 Orderhive</div>
+                    </div>
+                    <div class="job-period">May 2019 – Apr 2023</div>
+                </div>
+                <ul class="job-description">
+                    <li>Led content team to execute pillar-cluster content strategy, driving significant growth in brand visibility and engagement metrics</li>
+                    <li>Oversaw comprehensive content production including blogs, whitepapers, case studies, podcasts, and multimedia content tailored for global B2B audiences</li>
+                    <li>Applied competitive analysis via SEMRush and SimilarWeb to refine content frameworks and identify market opportunities</li>
+                    <li>Integrated AI-driven insights to enhance ranking performance and personalization across digital platforms</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Sr. Content Writer & Operations Head</div>
+                        <div class="company">Troot Technologies LLP</div>
+                    </div>
+                    <div class="job-period">Apr 2017 – Jan 2019</div>
+                </div>
+                <ul class="job-description">
+                    <li>Directed content creation and operational workflows, streamlining delivery processes and maintaining brand consistency</li>
+                    <li>Coordinated with technical teams to translate complex technological concepts into compelling, accessible narratives for target audiences</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Digital Content Writer</div>
+                        <div class="company">Micello, Inc.</div>
+                    </div>
+                    <div class="job-period">Oct 2015 – Feb 2017</div>
+                </div>
+                <ul class="job-description">
+                    <li>Developed SEO-friendly web copy and marketing collateral to enhance user engagement and strengthen brand messaging</li>
+                    <li>Contributed to content strategy for global markets, aligning tone, style, and messaging to diverse target audiences</li>
+                </ul>
+            </div>
+            
+            <div class="experience-item">
+                <div class="job-header">
+                    <div>
+                        <div class="job-title">Previous Experience</div>
+                        <div class="company">Multiple Organizations</div>
+                    </div>
+                    <div class="job-period">2009 – 2015</div>
+                </div>
+                <ul class="job-description">
+                    <li><strong>Earlier Roles:</strong> Content and marketing positions at Panamax InfoTech, Infibeam.com, AmulTek, Viteb, Searchking Techno Labs, English Language Tutor at Planet Education, St. Xavier's ICA</li>
+                    <li><em>Additional details available upon request</em></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">EDUCATION & CONTINUOUS LEARNING</h2>
+            
+            <div class="education-item">
+                <div class="edu-title">Currently Pursuing:</div>
+                <div class="edu-details">Strategic Brand Management and Communication | MICA (Mudra Institute of Communications, Ahmedabad) | In Progress</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="edu-title">M.A. in English</div>
+                <div class="edu-details">St. Xavier's College | 2006</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="edu-title">B.A. in English</div>
+                <div class="edu-details">Gujarat University | 2004</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">CERTIFICATIONS & PROFESSIONAL DEVELOPMENT</h2>
+            
+            <div class="cert-item">
+                <div class="edu-title">Professional Diploma in Digital Marketing</div>
+                <div class="edu-details">NIIT-DMI | 2014</div>
+            </div>
+            
+            <div class="cert-item">
+                <div class="edu-title">Generative AI Workshop</div>
+                <div class="edu-details">OutSkill | 16-Hour Intensive Training Program | August 2025</div>
+                <div class="cert-details">
+                    • Custom GPT Development and Implementation<br>
+                    • AI-Powered Social Media Content Generation<br>
+                    • Marketing Automation with AI Tools<br>
+                    • Advanced Content Creation Techniques
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">TECHNICAL SKILLS</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-title">AI & Automation Tools</div>
+                    <div class="skill-list">Generative AI Platforms, Custom GPT Development, AI-Powered Content Creation, Marketing Automation Systems</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">SEO & Analytics</div>
+                    <div class="skill-list">SEMRush, SimilarWeb, Google Analytics, Keyword Research Tools, Performance Tracking</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Design & Content Tools</div>
+                    <div class="skill-list">Canva, Content Management Systems (WordPress), Social Media Management Platforms</div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-title">Content Formats</div>
+                    <div class="skill-list">Web Copy, Blog Writing, Whitepapers, Case Studies, Podcasts, Multimedia Content, Social Media Content</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">LANGUAGES</h2>
+            <div class="languages">
+                <div class="language-item">English: Full Professional</div>
+                <div class="language-item">Gujarati: Professional Working</div>
+                <div class="language-item">Hindi: Professional Working</div>
+            </div>
+        </div>
+        
+        <div class="footer-note">
+            <em>References and portfolio samples available upon request</em>
+        </div>
+    </div>
+</div>
+</body>
+</html>
